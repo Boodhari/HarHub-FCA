@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Cart</h1>
+{% for cart_item in cart_items %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><img src="{{ cart_item.product.photo.url }}" alt="{{ cart_item.product.name }}" style="width: 100px; height: auto;"></td>
+        <td>{{ cart_item.product.name }}</td>
+        <td>${{ cart_item.product.price }}</td>
+        <td>{{ cart_item.quantity }}</td>
+        <td>${{ cart_item.get_total_price }}</td>
+    </tr>
+</table>
+<h3>Total: ${{ total }}</h3>
+{% endfor %}
+{% endblock %}
